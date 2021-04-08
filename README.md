@@ -71,11 +71,53 @@ avghighs, \
 avgspread
 ```
 
-
 ![pic3](img/x3.png)
 
+- Ignoring the obvious price differences, we can already see clear variances in their respective volatilities, with Ripple/XRP having the most variation between average highs/lows (.9) with Bitcoin/BTC having the least variation from average highs/lows (.95). Interesting... isn't Bitcoin supposed to be the "wildly unstable" asset?
 
 
+- Let's take another angle. Let's examine each days' 'Open' and 'Close' value and note if 'Close' is higher or lower than its 'Open'.
 
+```python
+
+def higherlower(df):
+    higher = 0  #counting days where the price was higher at close than at open
+    lower = 0   #counting days where the price was lower at close than at open
+    for index, row in df.iterrows():
+        if df.loc[index,'Close'] > df.loc[index,'Open']:
+            higher += 1
+        elif df.loc[index,'Close'] == df.loc[index,'Open']: #ignore this unlikely scenario
+            pass
+        else:
+            lower +=1
+    return higher, lower, higher/lower
+
+```
+```python
+a = higherlower(btc)
+b = higherlower(ltc)
+c = higherlower(xmr)
+d = higherlower(xrp)
+e = higherlower(eth)
+
+a,b,c,d,e
+```
+![pic5](img/x5.png)
+
+![pic4](img/x4.png)
+
+
+- Several things become fairly apparent here. From this data we can see Bitcoin/BTC has the highest rate of "higher" days while Ripple/XRP has the least of the group.
+- The next biggest and most obvious is regarding the data; the price have start dates ranging from 2013 to 2015, if we're going to start examining the prices and their movements, we should probably trim everything down so that each row of each datafram corresponds to the same date.
+    - In order to do this, we have to trim down to size of our shortest list, our newest crypocurrency, Etherium, which begins collection on 08/08/2015 and contains 2031 rows.
+
+```python
+# lets trim all df down to magic num len: 2031.
+btctrim= btc['Low'].iloc[831:]
+ltctrim = ltc['Low'].iloc[831:]
+xrptrim = xrp['Low'].iloc[733:]
+xmrtrim = xmr['Low'].iloc[442:]
+ethtrim = eth['Low']
+```
 
 - Then we went to correlation country. 
