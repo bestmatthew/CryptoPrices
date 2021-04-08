@@ -28,13 +28,13 @@ import seaborn as sns
 ```
 
 ```python
-btc = pd.read_csv('coin_Bitcoin.csv')  #first thing we do is load each csv data file into a pandas df
-btc['Swing'] = btc['High'] - btc['Low']  #I'm adding a col "Swing" to show the difference between the daily high/low
-btc['Percent'] = btc['High'] / btc['Low'] #I've added another col "Percent" to show the quotient of daily high/low prices
+btc = pd.read_csv('coin_Bitcoin.csv')  #read each csv data file into a pandas df
+btc['Swing'] = btc['High'] - btc['Low']  #adding a col "Swing" to show the difference between the daily high/low
+btc['Percent'] = btc['High'] / btc['Low'] #adding another col "Percent" to show the quotient of daily high/low prices
 btc                                        # variable for the Bitcoin pandas df with its added columns is called
 ```
 
-![Title](img/x1.png)
+![pic1](img/x1.png)
 
 - A look at the Bitcoin dataframe is shown above. You'll see our daily open/close, low/high, volume and market cap, along with the daily 'Swing' and its corresponding 'Percent' now ready for examination. This pandas dataframe contains 2862 rows × 12 columns
 
