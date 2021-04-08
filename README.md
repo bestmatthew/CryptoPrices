@@ -9,17 +9,17 @@ When Bitcoin was released over a decade later in 2009, it was the world's first 
 
 The history lesson ends here, however. We will be examining price data from Bitcoin/BTC (2009) along with a few others that emerged years afterwards: Litecoin/LTC (2011, Ripple/XRP (2013), Monero/XMR (2014), and Etherium/ETH (2015). To state the obvious, this is in no way a *comparison* across these cryptocurrencies. Their only similarities, for the purposes of this exercise, is that they're digital assets that have a fluctuating USD value.
 
-We will examine the indivudal price data and its movement to look for correlations beween the coins.
+We will examine the individual price data and their movement to look for correlations beween the coins.
 
 # The Data
 
 Because most crypocurrencies are bound to a blockchain - a public ledger of records - there is a considerable amount of data available for examination, most of which are beyond my computational munging skills, not to mention statistcal analysis.
 
-I used a cleaned dataset from (Sudalai Raj Kumar)[https://www.kaggle.com/sudalairajkumar/cryptocurrencypricehistory] which gave me a daily breakdown of Open/Close prices, daily Highs/Lows, daily trade volume and market cap. These simple, straightforward, value-focused metrics should hopefully be easy to understand and illuminate some information about the dataset.
+I used a cleaned dataset from [Sudalai Raj Kumar](https://www.kaggle.com/sudalairajkumar/cryptocurrencypricehistory) which provides a daily breakdown of Open/Close prices, Highs/Lows, daily trade volume and market cap. These simple, straightforward, value-focused metrics should hopefully be easy to digest and allow us to really understand our dataset.
 
 - First we'll make the necessary imports and read in the data.
 
-```
+```python
 import pandas as pd
 import numpy as np
 from scipy import stats
@@ -27,16 +27,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
-```
-btc = pd.read_csv('coin_Bitcoin.csv')  #first thing we do is 'load' each csv data file into a pandas df
+```python
+btc = pd.read_csv('coin_Bitcoin.csv')  #first thing we do is load each csv data file into a pandas df
 btc['Swing'] = btc['High'] - btc['Low']  #I'm adding a col "Swing" to show the difference between the daily high/low
 btc['Percent'] = btc['High'] / btc['Low'] #I've added another col "Percent" to show the quotient of daily high/low prices
 btc                                        # variable for the Bitcoin pandas df with its added columns is called
 ```
 
-- Then we derived some more data from the given CSV and wrote some scripts to aggregate off the new data
-            - First we took the "Swing" to measure the value between the high of the day and the low. This may be useful, but probably unlikely for comparison
-            - Then we took the "Percent" to measure the *percentage change* between the daily high and low. Now we can see some volatility! 
+![Title](img/x1.png)
+
+- A look at the Bitcoin dataframe is shown above. You'll see our daily open/close, low/high, volume and market cap, along with the daily 'Swing' and its corresponding 'Percent' now ready for examination. This pandas dataframe contains 2862 rows × 12 columns
 
 - Then we charted that shit - not super useful but if I had to bet, I could use the chart.
 
