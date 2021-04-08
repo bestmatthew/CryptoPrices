@@ -35,10 +35,18 @@ btc                                        # variable for the Bitcoin pandas df 
 
 ![pic1](img/x1.png)
 
--A look at the Bitcoin dataframe is shown above. You'll see two indexes (0- and 1-index), 'Name', 'Symbol', 'Date', 'High'/'Low', 'Open'/'Close', 'Volume', & 'Marketcap', along with the daily 'Swing' and its corresponding 'Percent' now ready for examination. This pandas dataframe contains 2862 rows × 12 columns holding daily data from 04/29/2013 to 2/27/2021.
+- A look at the Bitcoin dataframe is shown above. You'll see two indexes (0- and 1-index), 'Name', 'Symbol', 'Date', 'High'/'Low', 'Open'/'Close', 'Volume', & 'Marketcap', along with the daily 'Swing' and its corresponding 'Percent' now ready for examination. This pandas dataframe contains 2862 rows × 12 columns holding daily data from 04/29/2013 to 2/27/2021.
+
+```python
+coins = btc, ltc, xrp, xmr, eth      #variable that holds all data for the 5 dataframes
+
+coins
+```
 
 ![pic2](img/x2.png)
--With dataframes for BTC, LTC, XRP, XMR, & ETH loaded, our analysis can begin. First thing we examined was the average price points. We looked at the average highs and the lows, examining their variance and giving us an initial look into our different cryptocurrencies.
+
+
+- With dataframes for BTC, LTC, XRP, XMR, & ETH loaded, our analysis can begin. First thing we examined was the average price points. We looked at the average highs and the lows, examining their variance and giving us an initial look into our different cryptocurrencies.
 
 ```python
 def getavgl(data):
@@ -57,10 +65,10 @@ def getavgh(data):
 ```python
 avglows = np.array(getavgl(coins))
 avghighs = np.array(getavgh(coins))
-
+avgspread = avglows/avghighs
 avglows, \
 avghighs, \
-avglows/avghighs
+avgspread
 ```
 
 
