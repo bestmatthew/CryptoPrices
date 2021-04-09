@@ -109,7 +109,7 @@ a,b,c,d,e
 
 - Several things become fairly apparent here. From this data we can see Bitcoin/BTC has the highest rate of "higher" days while Ripple/XRP has the least of the group.
 - The next biggest and most obvious is regarding the data; the price have start dates ranging from 2013 to 2015, if we're going to start examining the prices and their movements, we should probably trim everything down so that each row of each dataframe corresponds to the same date.
-    - In order to do this, we have to trim down to size of our shortest list, our newest crypocurrency, Etherium, which begins collection on 08/08/2015 and contains 2031 rows.
+    - In order to do this, we have to trim down to size of our shortest list, our newest crypocurrency, Etherium, where the data begins collection on 08/08/2015 and contains 2031 rows.
 
 ```python
 # lets trim all our df down to magic len=2031.
@@ -120,4 +120,18 @@ xmrtrim = xmr['Low'].iloc[442:]
 ethtrim = eth['Low']
 ```
 
-- Then we went to correlation country. See ya...
+- Then we went to correlation country. Computing the Pearson correlations of price movements yeilded the following:
+
+
+BTC	LTC	XRP	XMR	ETH
+
+BTC          | LTC          | XRP       |XMR      | ETH  
+------------ | ------------ | --------- | ------- | -------
+BTC	1.000000	0.688128	0.421084	0.606872	0.862465
+LTC	0.688128	1.000000	0.827995	0.939251	0.843916
+XRP	0.421084	0.827995	1.000000	0.877312	0.674485
+XMR	0.606872	0.939251	0.877312	1.000000	0.826711
+ETH	0.862465	0.843916	0.674485	0.826711	1.000000
+
+
+![CorrelationHeatmap](img/pathgoeshere)
