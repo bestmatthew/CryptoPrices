@@ -123,7 +123,6 @@ ethtrim = eth['Low']
 - Then we went to correlation country. Computing the Pearson correlations of price movements yeilded the following:
 
 
-BTC	LTC	XRP	XMR	ETH
 BTC          | LTC         | XRP         | XMR          | ETH
 ------------ | ----------- | ----------- | ------------ | ---
 1.000000  |	0.688128   |	0.421084    |	0.606872   |	0.862465|
@@ -131,6 +130,5 @@ BTC          | LTC         | XRP         | XMR          | ETH
 0.421084  |	0.827995   |	1.000000    |	0.877312   |	0.674485|
 0.606872  |	0.939251   |	0.877312    |	1.000000   |	0.826711|
 0.862465  |	0.843916   |	0.674485    |	0.826711   |	1.000000|
-
 
 ![CorrelationHeatmap](img/pathgoeshere)
