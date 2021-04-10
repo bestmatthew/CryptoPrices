@@ -131,15 +131,25 @@ ethtrim = eth['Low']
 
 
 
-BTC          | LTC         | XRP         | XMR          | ETH
------------- | ----------- | ----------- | ------------ | ---
-BTC	1.000000 |	0.699078  |	0.396935   |	0.504828  |	0.388574
-LTC	0.699078 |	1.000000  |	0.514094   |	0.419860  |	0.334974
-XRP	0.396935 |	0.514094  |	1.000000   |	0.298468  |	0.230860
-XMR	0.504828 |	0.419860  |	0.298468   |	1.000000  |	0.389764
-ETH	0.388574 |	0.334974  |	0.230860   |	0.389764  |	1.000000
+BTC              | LTC         | XRP         | XMR          | ETH
+---------------- | ----------- | ----------- | ------------ | ---
+BTC|	1.000000 |	0.699078  |	0.396935   |	0.504828  |	0.388574
+LTC|	0.699078 |	1.000000  |	0.514094   |	0.419860  |	0.334974
+XRP|	0.396935 |	0.514094  |	1.000000   |	0.298468  |	0.230860
+XMR|	0.504828 |	0.419860  |	0.298468   |	1.000000  |	0.389764
+ETH|	0.388574 |	0.334974  |	0.230860   |	0.389764  |	1.000000
 
 
 ![CorrelationHeatmap](img/dailydeltamatrix.png)
 
+- The correlations, overall, are alarmingly high. The lowest correlations, ETH/XRP (r = 0.230860) still fairly strong, with three (3) currencies with r > .5, *very high*: BTC/LTC(r = 0.699078), BTC/XMR (r = 0.504828), LTC/XRP (r = 0.514094).
 
+- Let's "zoom out" in a way, and actually see the data in our correlation matrix. Below is a visualization of 2031 datapoints spanning 7 years across each of the 5 cryptocurrencies, starting in August 2015 - Feb 2021. Each datapoint represents the "daily delta" by examining the daily high/low as a percentage. The higher the plot, the wilder the day. Instantly you may identify the most volitile days and most volatile currencies by examining the outlying marks.
+
+![Scatter5coins](img/scatter5coins.png)
+
+- It's a little busy to look at 10,000 dots at once, but seeing the volatility over the 2000 days brings more questions than it answers, but some more history may be needed for context. 2017 had outrageous growth across the board (BTC in Jan 2017: $800 ; BTC in Dec 2017: $18,000) and its reflected in our plot. Interesting clusters of volatility can be earily be observed in late 2016, 2017, late 2019, and the giant losses, thank you COVID, can be seen about 30% (March-April) into 2020...
+
+- Lets take out a bit of this noise. We can see the most volatile of the bunch are XRP, XMR, and ETH. A plot of just those:
+
+![top3deltas](img/top3deltachart.png)
