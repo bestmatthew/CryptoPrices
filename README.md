@@ -81,7 +81,7 @@ swings
 
 - Ignoring the clear, large price differences, we can already see clear variances in their respective volatilities, with Ripple/XRP having the most variation between average highs/lows (10%) with Bitcoin/BTC having the least variation from average highs/lows (5%). Interesting... isn't Bitcoin supposed to be the "wildly unstable" asset of the bunch?
 
-![barshighlowvar](img/varbarchar)
+![barshighlowvar](img/varbarchar.png)
 
 - Let's take another angle. Let's examine each days' 'Open' and 'Close' value and note if 'Close' is higher or lower than its 'Open'. We like making money, so lets find out who's been celebrating each night, and who's been crying?
 
@@ -138,6 +138,6 @@ BTC          | LTC         | XRP         | XMR          | ETH
 0.606872  |	0.939251   |	0.877312    |	1.000000   |	0.826711|
 0.862465  |	0.843916   |	0.674485    |	0.826711   |	1.000000|
 
-![CorrelationHeatmap](img/dailydeltamatrix)
+![CorrelationHeatmap](img/dailydeltamatrix.png)
 
 
