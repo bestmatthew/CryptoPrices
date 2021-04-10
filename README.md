@@ -127,16 +127,18 @@ xmrtrim = xmr['Low'].iloc[442:]
 ethtrim = eth['Low']
 ```
 
-- . Computing the Pearson correlations of price movements yeilded the following:
+- Are these cryptocurrencies related? How closely do they move together? We examined the "daily delta" of the daily high price / daily low to see if volatilities may be related. The Pearson r values are shown below.
+
 
 
 BTC          | LTC         | XRP         | XMR          | ETH
 ------------ | ----------- | ----------- | ------------ | ---
-1.000000  |	0.688128   |	0.421084    |	0.606872   |	0.862465|
-0.688128  |	1.000000   |	0.827995    |	0.939251   | 	0.843916|
-0.421084  |	0.827995   |	1.000000    |	0.877312   |	0.674485|
-0.606872  |	0.939251   |	0.877312    |	1.000000   |	0.826711|
-0.862465  |	0.843916   |	0.674485    |	0.826711   |	1.000000|
+BTC	1.000000 |	0.699078  |	0.396935   |	0.504828  |	0.388574
+LTC	0.699078 |	1.000000  |	0.514094   |	0.419860  |	0.334974
+XRP	0.396935 |	0.514094  |	1.000000   |	0.298468  |	0.230860
+XMR	0.504828 |	0.419860  |	0.298468   |	1.000000  |	0.389764
+ETH	0.388574 |	0.334974  |	0.230860   |	0.389764  |	1.000000
+
 
 ![CorrelationHeatmap](img/dailydeltamatrix.png)
 
