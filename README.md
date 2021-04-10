@@ -1,3 +1,5 @@
+[top photo will go heeeeeerrrreeeee]
+
 ### CryptoPrices
 Exploratory Data Analysis around BTC and other cryptocurrencies
 
@@ -7,14 +9,18 @@ Cryptocurrency, a digital asset designed to work as a medium of exchange, is far
 
 When Bitcoin was released over a decade later in 2009, it was the world's first decentralized crypocurrency -- lacking an organizational or authoritative controlling body -- and put simply, an asset which may only be accessed by its key-holder.
 
-The history lesson ends here, however. We will be examining price data from Bitcoin/BTC (2009) along with a few others that emerged years afterwards: Litecoin/LTC (2011, Ripple/XRP (2013), Monero/XMR (2014), and Etherium/ETH (2015). To state the obvious, this is in no way a *comparison* across these cryptocurrencies. Their only similarities, for the purposes of this exercise, is that they're digital assets that have a fluctuating USD value.
+The history lesson ends here, however.
 
-We will examine the individual price data and their movement to look for correlations beween the coins.
+We will be examining price data from Bitcoin/BTC (2009) along with a few others that emerged years afterwards: Litecoin/LTC (2011, Ripple/XRP (2013), Monero/XMR (2014), and Etherium/ETH (2015). To state the obvious, this is in no way a *comparison* across these cryptocurrencies. Their only similarities, for the purposes of this exercise, is that they're digital assets that have a fluctuating USD value.
+
+We will examine the individual price data and their movement to look for correlations beween them.
 
 ## The Data
 
 Because most crypocurrencies are bound to a blockchain - a public ledger of records - there is a considerable amount of data available for examination. The dearth of data held by the [Blockchain.info API](https://www.blockchain.com/charts) was too much for now but may hopefully provide more data for future projects.
 We used a cleaned dataset from [Sudalai Raj Kumar](https://www.kaggle.com/sudalairajkumar/cryptocurrencypricehistory) which provides a clean daily breakdown of Open/Close prices, Highs/Lows, daily trade volume and market cap among 20+ cryptocurencies. These simple, straightforward, value-focused metrics should hopefully be easy to digest and allow us to really understand our dataset.
+
+## Data Exploration
 
 - First we'll make the necessary imports and read in the data.
 
@@ -33,7 +39,7 @@ btc['Percent'] = btc['High'] / btc['Low'] #adding another col "Percent" to show 
 btc                                        # variable for the Bitcoin pandas df with its added columns is called
 ```
 
-![pic1](img/x1.png)
+![snapbtcdf](img/x1.png)
 
 - A look at the Bitcoin dataframe is shown above. You'll see two indexes (0- and 1-index), 'Name', 'Symbol', 'Date', 'High'/'Low', 'Open'/'Close', 'Volume', & 'Marketcap', along with the daily 'Swing' and its corresponding 'Percent' now ready for examination. This pandas dataframe contains 2862 rows × 12 columns holding daily data from 04/29/2013 to 2/27/2021.
 
@@ -65,16 +71,17 @@ def getavgh(data):
 ```python
 avglows = np.array(getavgl(coins))
 avghighs = np.array(getavgh(coins))
-avgspread = avglows/avghighs
+swings = avghighs/avglows
 avglows, \
 avghighs, \
-avgspread
+swings
 ```
 
-![pic3](img/x3.png)
+![swingsarr](img/x3.png)
 
-- Ignoring the obvious price differences, we can already see clear variances in their respective volatilities, with Ripple/XRP having the most variation between average highs/lows (.9) with Bitcoin/BTC having the least variation from average highs/lows (.95). Interesting... isn't Bitcoin supposed to be the "wildly unstable" asset?
+- Ignoring the clear, large price differences, we can already see clear variances in their respective volatilities, with Ripple/XRP having the most variation between average highs/lows (10%) with Bitcoin/BTC having the least variation from average highs/lows (5%). Interesting... isn't Bitcoin supposed to be the "wildly unstable" asset of the bunch?
 
+![pic_A](img/varbarchar)
 
 - Let's take another angle. Let's examine each days' 'Open' and 'Close' value and note if 'Close' is higher or lower than its 'Open'.
 
